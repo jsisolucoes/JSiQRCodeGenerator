@@ -1,21 +1,29 @@
-DelphiZXingQRCode
+TJSiQRCodeGenFMX
 =================
 
-DelphiZXingQRCode is a Delphi port of the QR Code functionality from ZXing, an open source 
-barcode image processing library. The code was ported to Delphi by Senior Debenu Developer, 
-Kevin Newman. The port retains the original Apache License (v2.0).
+TJSiQRCodeGenFMX is a non visual component for Firemonkey based on DelphiZXingQRCode;
 
-DelphiZXingQRCode Project
+You can Generate a TBitmap with QRCode or link the result on an TImage;
 
-http://www.debenu.com/open-source/delphizxingqrcode-open-source-delphi-qr-code-generator/
-
-ZXing
-
-https://github.com/zxing/zxing
+# Structure #
+TJSiQRCodeGenFMX
+  -Properties
+    -Data {Text type information to compose the QRCode}
+    -Encoding {Encoding for Data}
+    -QuietZone
+    -Tempo {time for each QRCode build on ms}
+    -QRCode {TBitmap with QRCode generated}
+    -Name {Component name}
+    -ImageControl {Link to TImage control}
+  -Events
+    -OnGenerate {Returns Time and QRCode Bitmap}
+    -OnError { Returns Error Number and Error Message}
+  -Methods
+    -GenerateQRCode { Do generate the QRCode }
 
 # Getting Started #
 
-A sample Delphi project is provided in the TestApp folder to demonstrate how to use DelphiZXingQRCode. 
-Simply add the DelphiZXIngQRCode.pas to the DelphiZXingQRCodeTestApp Delphi project and compile.
+A sample Delphi FMX project is provided in the Sample folder to demonstrate how to use TJSiQRCodeGenFMX. 
+
 
 [Provided by Debenu]
