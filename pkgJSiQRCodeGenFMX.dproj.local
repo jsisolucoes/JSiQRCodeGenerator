@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2022/05/16 13:22:29.000,=rtl.dcp</Transaction>
+    <Transaction>2022/05/16 13:23:33.200,C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\package\pkgJSiQRCodeGenFMX.dproj=C:\0.Projetos\Default\Package1.dproj</Transaction>
+    <Transaction>2022/05/16 13:23:51.192,=C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\source\JSiQRCodeGenFMX.pas</Transaction>
+    <Transaction>2022/05/16 13:24:16.043,=C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\source\FMX.DelphiZXIngQRCode.pas</Transaction>
+    <Transaction>2022/05/16 13:24:24.539,=fmx.dcp</Transaction>
+  </Transactions>
+</BorlandProject>
