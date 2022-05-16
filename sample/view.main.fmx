@@ -1,0 +1,165 @@
+object viewMain: TviewMain
+  Left = 0
+  Top = 0
+  Caption = 'Form25'
+  ClientHeight = 647
+  ClientWidth = 376
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object btnGen: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 0
+    Text = 'Generate'
+    OnClick = btnGenClick
+  end
+  object edtData: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Text = 'JSi Solucoes QRCode Generator'
+    Position.X = 16.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 8.000000000000000000
+    Text = 'Text Data'
+    TabOrder = 2
+  end
+  object grpConfig: TGroupBox
+    Position.X = 16.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 89.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Settings'
+    TabOrder = 3
+    object edtEncoding: TComboBox
+      Items.Strings = (
+        'Auto'
+        'Numeric'
+        'Alphanumeric'
+        'ISO88591'
+        'UTF8NoBOM'
+        'UTF8BOM')
+      ItemIndex = 0
+      Position.X = 136.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 193.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+    end
+    object Label2: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Encoding'
+      TabOrder = 1
+    end
+    object Label3: TLabel
+      Position.X = 16.000000000000000000
+      Position.Y = 56.000000000000000000
+      Text = 'Quiet Zone'
+      TabOrder = 2
+    end
+    object edtQZone: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 3
+      Cursor = crIBeam
+      Min = 1.000000000000000000
+      Max = 6.000000000000000000
+      Value = 4.000000000000000000
+      Position.X = 136.000000000000000000
+      Position.Y = 52.000000000000000000
+      Size.Width = 84.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object lblTime: TLabel
+    Position.X = 240.000000000000000000
+    Position.Y = 8.000000000000000000
+    TextSettings.HorzAlign = Trailing
+    Text = '0 ms'
+    TabOrder = 5
+  end
+  object imgQRCode: TImage
+    MultiResBitmap.Height = 33
+    MultiResBitmap.Width = 33
+    MultiResBitmap = <
+      item
+        Width = 33
+        Height = 33
+        PNG = {
+          89504E470D0A1A0A0000000D494844520000002100000021080600000057E4C2
+          6F000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+          017E494441545847ED94D1AEC2300C4337FEFF9F010307192FE956A489178E54
+          35CB12C7B7B76CBDDE597ECCE5B5FF94BF09D8DC89755D5FD1164A5593317D9E
+          EF8891B5892C1299DF1B725447B4FF0E15B31CCF21A6DD63A7D371A6EF840F91
+          30CFA3217B7C7531F3AFC6409EC2515A131264257E0282B83A8D910E4CFF3A30
+          7064EFD07B67FAB3EDE23E8C7852EEC1F0247C88E3796264B21FBC2619DE091A
+          5947A8EA30A6DD4D4269020382462D0610F3EC83E9738D3D4A13394420EA7986
+          6827E63DCFE07DC9EE49884A5478DE0764CEDF556C4C209CA295901B53CC4A3C
+          57EADC931F59358C06EA5D3548D097EFB327F5CBEF44D7A03C82E4A9CD7C85D7
+          3AED49D020F259543522EB9C18F5E6AB2FA61B2046C663D1D5399B8BA9C26E25
+          2E9CEFAB7A51E5DB9F682E87C1427B25EC3D5EEB79284D0809B3926AB08B8F7A
+          2B5A131D698098A1FCB52C18199A36C120C8A19811BED343CE694DB87092A23E
+          2C710DEF734A1308FB725CD4A90624D923A6BF1367307D27CEE06FE2C9B2DC00
+          0EF8B221648151410000000049454E44AE426082}
+        FileName = 'C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\sample\sample.bmp'
+      end>
+    DisableInterpolation = True
+    Position.X = 40.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 300.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object mLog: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Bottom
+    Margins.Left = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Position.X = 10.000000000000000000
+    Position.Y = 508.000000000000000000
+    Size.Width = 356.000000000000000000
+    Size.Height = 139.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Viewport.Width = 352.000000000000000000
+    Viewport.Height = 135.000000000000000000
+  end
+  object btnSave: TButton
+    Enabled = False
+    Position.X = 280.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 8
+    Text = 'Save to File'
+    OnClick = btnSaveClick
+  end
+  object JSiQRCodeGenFMX1: TJSiQRCodeGenFMX
+    Encoding = qrAuto
+    QuietZone = 0
+    ImageControl = imgQRCode
+    OnGenerate = JSiQRCodeGenFMX1Generate
+    OnError = JSiQRCodeGenFMX1Error
+    Left = 56
+    Top = 536
+  end
+  object SD: TSaveDialog
+    DefaultExt = '*.bmp'
+    Filter = 'Bitmap (*.bmp)|*.bmp'
+    Left = 176
+    Top = 536
+  end
+end
