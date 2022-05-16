@@ -26,4 +26,4 @@ TJSiQRCodeGenFMX
 A sample Delphi FMX project is provided in the Sample folder to demonstrate how to use TJSiQRCodeGenFMX. 
 
 
-[Provided by Debenu]
+[Provided by jsisolucoes]
