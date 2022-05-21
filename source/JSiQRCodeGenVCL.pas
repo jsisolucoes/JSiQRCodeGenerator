@@ -1,4 +1,4 @@
-unit JSiQRCodeGenFMX;
+unit JSiQRCodeGenVCL;
 
 interface
 
@@ -7,9 +7,9 @@ uses
   System.Classes,
   System.Types,
   System.UITypes,
-  FMX.DelphiZXIngQRCode,
-  FMX.Graphics,
-  FMX.Objects;
+  VCL.DelphiZXIngQRCode,
+  VCL.Graphics,
+  Vcl.ExtCtrls;
 
 type
   TQRCodeEncoding = (qrAuto, qrNumeric, qrAlphanumeric, qrISO88591, qrUTF8NoBOM, qrUTF8BOM);
@@ -17,7 +17,7 @@ type
   TOnGenerate = procedure(Sender: TObject; Tempo: Integer; const aQRCode: TBitmap) of object;
   TOnError = procedure(Sender: TObject; ErroN: Integer; ErroMsg: String) of object;
 
-  TJSiQRCodeGenFMX = class(TComponent)
+  TJSiQCodeGenVCL = class(TComponent)
   private
     FQR: TDelphiZXingQRCode;     //Onde a mágica acontece
     FData: WideString;           //informacao do QR Code
@@ -54,38 +54,36 @@ implementation
 
 procedure Register;
 begin
-  RegisterComponents('JSi', [TJSiQRCodeGenFMX]);
+  RegisterComponents('JSi', [TJSiQCodeGenVCL]);
 end;
 
-{ TJSiQRCodeGenFMX }
+{ TJSiQCodeGenVCL }
 
-constructor TJSiQRCodeGenFMX.Create(aOwner: TComponent);
+constructor TJSiQCodeGenVCL.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
   FQR := TDelphiZXingQRCode.Create;
   FQRBitmap := TBitmap.Create;
 end;
 
-destructor TJSiQRCodeGenFMX.Destroy;
+destructor TJSiQCodeGenVCL.Destroy;
 begin
   FQRBitmap.Free;
   FQR.Free;
   inherited Destroy;
 end;
 
-procedure TJSiQRCodeGenFMX.DoGenQRCode;
+procedure TJSiQCodeGenVCL.DoGenQRCode;
 begin
   FTempo := 0;
   var Start: Integer;
   var Stop: Integer := 0;
-  var bitdata: TBitmapData;
   var Col, Row: Integer;
-  var PixelC: TAlphaColor;
   try
     Start := TThread.GetTickCount; //iniciando contagem de tempo
-    FQRBitmap.Canvas.Clear(TalphaColors.White); //limpando o bitmap
+    FQRBitmap.Canvas.Brush.Color := clWhite;
     FQR.Data := FData;
-    FQR.Encoding := FMX.DelphiZXIngQRCode.TQRCodeEncoding(Ord(FEncoding));
+    FQR.Encoding := VCL.DelphiZXIngQRCode.TQRCodeEncoding(Ord(FEncoding));
     FQR.QuietZone := FQZone;
     FQRBitmap.SetSize(FQR.Rows, FQR.Columns);
     for Row := 0 to Pred(FQR.Rows) do
@@ -93,39 +91,28 @@ begin
         for Col := 0 to Pred(FQR.Columns) do
           begin
             if FQR.IsBlack[Row,Col] then
-              PixelC := talphacolors.Black
+              FQRBitmap.Canvas.Pixels[Col,Row] := clBlack
             else
-              PixelC := talphacolors.White;
-            if FQRBitmap.Map(TMapAccess.Write, bitdata) then
-              begin
-                Try
-                  bitdata.SetPixel(Col,Row, PixelC);
-                Finally
-                  FQRBitmap.Unmap(bitdata);
-                End;
-              end;
+              FQRBitmap.Canvas.Pixels[Col,Row] := clWhite;
           end;
       end;
 
     if Assigned(FImageControl) then  //controle linkado, entao ja exibe o resultado
       begin
-        var rSrc: TRectF;
-        var rDest: TRectF;
-        FImageControl.DisableInterpolation := true;
-        FImageControl.WrapMode := TImageWrapMode.iwStretch;
-        FImageControl.Bitmap.SetSize(FQRBitmap.Width, FQRBitmap.Height);
-
-        rSrc := TRectF.Create(0, 0, FQRBitmap.Width, FQRBitmap.Height);
-        rDest := TRectF.Create(0, 0, FImageControl.Bitmap.Width, FImageControl.Bitmap.Height);
-
-        if FImageControl.Bitmap.Canvas.BeginScene then
-          try
-            FImageControl.Bitmap.Canvas.Clear(TAlphaColors.White);
-
-            FImageControl.Bitmap.Canvas.DrawBitmap(FQRBitmap, rSrc, rDest, 1);
-          finally
-            FImageControl.Bitmap.Canvas.EndScene;
-          end;
+//        var scale: Double;
+//        FImageControl.Canvas.Brush.Color := clWhite;
+//        FImageControl.Canvas.FillRect(Rect(0,0,FImageControl.Width,FImageControl.Height));
+//
+//        if FImageControl.Width < FImageControl.Height then
+//          begin
+//            scale := FImageControl.Width / FImageControl.Height;
+//          end
+//        else
+//            scale := FImageControl.Height / FImageControl.Width;
+//        FImageControl.Canvas.StretchDraw(rect(0,0, Trunc(Scale * QRCode.Width), trunc(Scale * QRCode.Height)), QrCode);
+        FImageControl.Picture.Bitmap.Assign(QRCode);
+        FImageControl.Stretch := True;
+        FImageControl.Center := True;
         Stop := TThread.GetTickCount;
         FTempo := (Stop-Start);
       end
@@ -140,24 +127,24 @@ begin
   end;
 end;
 
-procedure TJSiQRCodeGenFMX.DoOnError(ErrorN: Integer; ErrorMsg: String);
+procedure TJSiQCodeGenVCL.DoOnError(ErrorN: Integer; ErrorMsg: String);
 begin
   if Assigned(FOnError) then
     FOnError(Self,ErrorN,ErrorMsg);
 end;
 
-procedure TJSiQRCodeGenFMX.DoOnGenerate(Tempo: Integer; const aQRCode: TBitmap);
+procedure TJSiQCodeGenVCL.DoOnGenerate(Tempo: Integer; const aQRCode: TBitmap);
 begin
   if Assigned(FOnGenerate) then
     FOnGenerate(Self,Tempo, aQRCode);
 end;
 
-procedure TJSiQRCodeGenFMX.GenerateQRCode;
+procedure TJSiQCodeGenVCL.GenerateQRCode;
 begin
   DoGenQRCode;
 end;
 
-procedure TJSiQRCodeGenFMX.setImageControl(const Value: TImage);
+procedure TJSiQCodeGenVCL.setImageControl(const Value: TImage);
 begin
   FImageControl := Value;
 end;
