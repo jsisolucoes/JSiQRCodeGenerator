@@ -1,12 +1,12 @@
-TJSiQRCodeGenFMX
+TJSiQRCodeGen
 =================
 
-TJSiQRCodeGenFMX is a non visual component for Firemonkey based on DelphiZXingQRCode;
+TJSiQRCodeGen is a non visual component for Firemonkey and VCL based on DelphiZXingQRCode;
 
 You can Generate a TBitmap with QRCode or link the result on an TImage;
 
 # Structure #
-TJSiQRCodeGenFMX
+TJSiQRCodeGenFMX / TJSiQRCodeGenVCL
 
   -Properties
 
@@ -36,7 +36,9 @@ TJSiQRCodeGenFMX
 
 # Getting Started #
 
-A sample Delphi FMX project is provided in the Sample folder to demonstrate how to use TJSiQRCodeGenFMX. 
+A sample Delphi FMX project is provided in the Sample/fmx folder to demonstrate how to use TJSiQRCodeGenFMX. 
+
+A sample Delphi VCL project is provided in the Sample/vcl folder to demonstrate how to use TJSiQRCodeGenVCL. 
 
 
 [Provided by jsisolucoes]
