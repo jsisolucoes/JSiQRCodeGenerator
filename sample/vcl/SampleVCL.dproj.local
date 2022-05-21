@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2022/05/21 07:59:27.128,=C:\0.Projetos\Default\Unit24.pas</Transaction>
+    <Transaction>2022/05/21 08:30:46.320,C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\sample\VCL\view.main.dfm=C:\0.Projetos\Default\Unit24.dfm</Transaction>
+    <Transaction>2022/05/21 08:30:46.320,C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\sample\VCL\view.main.pas=C:\0.Projetos\Default\Unit24.pas</Transaction>
+    <Transaction>2022/05/21 08:30:58.271,C:\1.Producao\Componentes-JSi\TJSiQRCodeGen\sample\VCL\SampleVCL.dproj=C:\0.Projetos\Default\Project17.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
